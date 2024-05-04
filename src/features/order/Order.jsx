@@ -1,6 +1,6 @@
 // Test ID: IIDSAT
 
-import { useLoaderData, useRouteLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { getOrder } from "../../services/apiRestaurant.js";
 import {
 	calcMinutesLeft,
