@@ -5,6 +5,7 @@ function NotFound() {
 	// hook provided by react-router-dom
 	// provides errors if any
 	const error = useRouteError();
+	console.log(error);
 
 	return (
 		<div>

@@ -1,5 +1,6 @@
 // Test ID: IIDSAT
 
+import { getOrder } from "../../services/apiRestaurant.js";
 import {
 	calcMinutesLeft,
 	formatCurrency,
@@ -81,6 +82,14 @@ function Order() {
 			</div>
 		</div>
 	);
+}
+
+// load order data from the api
+// we used orderId to match the route we defined in createBrowserRouter()
+export async function loader({ params }) {
+	// console.log(params);
+	const order = await getOrder(params.orderId);
+	return order;
 }
 
 export default Order;
