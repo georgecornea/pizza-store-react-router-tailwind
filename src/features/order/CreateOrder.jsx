@@ -1,4 +1,4 @@
-import { Form, redirect, useNavigation } from "react-router-dom";
+import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
 
 // https://uibakery.io/regex-library/phone-number
@@ -39,6 +39,10 @@ function CreateOrder() {
 	const navigation = useNavigation();
 	const isSubmitting = navigation.state === "submitting";
 
+	// useActionData() - hook that get access to the data
+	// return by the action() function
+	const formErrors = useActionData();
+
 	return (
 		<div>
 			<h2>Ready to order? Let's go!</h2>
@@ -65,6 +69,7 @@ function CreateOrder() {
 							required
 						/>
 					</div>
+					{formErrors?.phone && <p>{formErrors.phone}</p>}
 				</div>
 
 				<div>
@@ -118,7 +123,13 @@ export async function action({ request }) {
 	};
 
 	// console.log(order);
+	const errors = {};
+	if (!isValidPhone(order.phone))
+		errors.phone = "Please enter a valid phone number!";
 
+	if (Object.keys(errors).length > 0) return errors;
+
+	// if no errors in the form, create new order and redirect
 	// newOrder is the order that comes back from the api
 	const newOrder = await createOrder(order);
 
