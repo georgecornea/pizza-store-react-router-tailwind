@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import SearchOrder from "../features/order/SearchOrder";
 
 export default function Header() {
-	return (
-		<header>
-			<Link to='/'>React Pizza Co.</Link>
-			<SearchOrder />
-			<p>User Johnny</p>
-		</header>
-	);
+  return (
+    <header className="bg-yellow-400 uppercase">
+      <Link className="tracking-[5px]" to="/">
+        React Pizza Co.
+      </Link>
+      <SearchOrder />
+      <p>User Johnny</p>
+    </header>
+  );
 }
