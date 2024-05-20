@@ -45,8 +45,8 @@ function CreateOrder() {
 
   return (
     <div>
+      // eslint-disable-next-line react/no-unescaped-entities
       <h2>Ready to order? Let's go!</h2>
-
       {/* we don't need action because the Form reads 
     the route defined in the createBrowserRouter for this element  */}
       {/* <Form method="POST" action="/order/new">  */}
@@ -115,8 +115,6 @@ export async function action({ request }) {
     errors.phone = "Please enter a valid phone number!";
 
   if (Object.keys(errors).length > 0) return errors;
-
-  return null;
 
   // if no errors in the form, create new order and redirect
   // newOrder is the order that comes back from the api
